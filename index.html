@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Spam Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <main class="container">
+    <header class="hero">
+      <div class="logo"><span>✉</span></div>
+      <div>
+        <p class="eyebrow">MACHINE LEARNING SYSTEM</p>
+        <h1>AI Spam Detector</h1>
+        <p class="subtitle">Detect suspicious emails using TF-IDF + Multinomial Naive Bayes.</p>
+      </div>
+      <div class="status"><i></i> MODEL ONLINE</div>
+    </header>
+
+    <section class="card input-card">
+      <div class="section-title">
+        <div>
+          <span class="step">01</span>
+          <h2>Email Analysis</h2>
+        </div>
+        <span id="counter">0 characters</span>
+      </div>
+
+      <textarea id="emailText" maxlength="5000"
+        placeholder="Paste or type an email/message here..."></textarea>
+
+      <div class="examples">
+        <button data-example="Congratulations! You have won a free iPhone. Click here to claim your prize now!">Try spam example</button>
+        <button data-example="Hi, can we meet tomorrow at 10 AM to discuss the assignment?">Try safe example</button>
+      </div>
+
+      <button id="analyzeBtn" class="analyze">
+        <span class="btn-text">ANALYZE EMAIL</span>
+        <span class="spinner"></span>
+        <span class="arrow">→</span>
+      </button>
+    </section>
+
+    <section id="scanCard" class="card scan-card hidden">
+      <div class="scan-orb">⌁</div>
+      <h2>Analyzing message</h2>
+      <p id="scanText">Preparing text...</p>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="pipeline">
+        <span id="p1">Text cleaning</span>
+        <span id="p2">TF-IDF features</span>
+        <span id="p3">Naive Bayes</span>
+        <span id="p4">Prediction</span>
+      </div>
+    </section>
+
+    <section id="resultCard" class="card result-card hidden">
+      <div class="result-top">
+        <div>
+          <span class="step">02</span>
+          <h2>Prediction Result</h2>
+        </div>
+        <span id="resultBadge" class="badge">RESULT</span>
+      </div>
+
+      <div class="result-main">
+        <div id="resultIcon" class="result-icon">✓</div>
+        <div>
+          <div id="resultLabel" class="result-label">NOT SPAM</div>
+          <p id="resultMessage">This message appears safe.</p>
+        </div>
+        <div class="probability">
+          <strong id="probability">0%</strong>
+          <span>spam probability</span>
+        </div>
+      </div>
+
+      <div class="meter">
+        <div id="meterFill"></div>
+      </div>
+
+      <div class="model-grid">
+        <div><span>MODEL</span><strong>Multinomial Naive Bayes</strong></div>
+        <div><span>FEATURES</span><strong>TF-IDF</strong></div>
+        <div><span>DECISION THRESHOLD</span><strong>50%</strong></div>
+      </div>
+
+      <button id="resetBtn" class="reset">Analyze another message</button>
+    </section>
+
+    <footer>
+      <span>AI Spam Detection</span>
+      <span>•</span>
+      <span>TF-IDF + Multinomial Naive Bayes</span>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
