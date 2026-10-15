@@ -5,3 +5,4 @@ joblib
 streamlit>=1.50
 plotly
 wordcloud
+numpy
